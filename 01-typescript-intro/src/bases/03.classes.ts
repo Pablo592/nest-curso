@@ -1,4 +1,5 @@
 import axios from "axios"
+import { Move, PokeapiResponse } from "../interfaces/pokeapi-response.interface"
 
 export class Pokemon {
 
@@ -16,11 +17,10 @@ export class Pokemon {
        return 'Pikachu!'
     }
 
-    async getMoves(){
-        const resp = await axios.get(`https://pokeapi.co/api/v2/pokemon/${this.id}`)
-        const {data} = await axios.get(`https://pokeapi.co/api/v2/pokemon/${this.id}`)
+    async getMoves(): Promise<Move[]>{
+        const {data} = await axios.get<PokeapiResponse>(`https://pokeapi.co/api/v2/pokemon/${this.id}`)
         console.log(data)
-        return resp.data.moves
+        return data.moves
     }
 }
 
