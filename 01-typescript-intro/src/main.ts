@@ -1,12 +1,12 @@
 import './style.css'
-import { name } from './bases/01-types.ts'
+import { pokemonIds } from './bases/02-objects.ts'
 import typescriptLogo from './typescript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.ts'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
-    <p>Hello, ${name}!</p>
+    <p>Hello, ${pokemonIds.join(',')}!</p>  
     <a href="https://vitejs.dev" target="_blank">
       <img src="${viteLogo}" class="logo" alt="Vite logo" />
     </a>
