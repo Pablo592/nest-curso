@@ -6,7 +6,11 @@ import { setupCounter } from './counter.ts'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
-    <p>Hello, ${pikachu.name}!</p>  
+    <p>Hello, ${pikachu.name}!</p>
+    <img src="${pikachu.imageUrl}" alt="Pikachu" />
+    <p>${pikachu.name} says:</p>
+    <p>${pikachu.speak()}Speak</button>
+    <p>${pikachu.scream()}Scream</button>
     <a href="https://vitejs.dev" target="_blank">
       <img src="${viteLogo}" class="logo" alt="Vite logo" />
     </a>
