@@ -29,4 +29,7 @@ export const pikachu:Pokemon = {
     }
 }
 
-console.log(pikachu)
+export const pokemons:Pokemon[] = [];
+
+pokemons.push(pikachu,pikachu,pikachu,pikachu,pikachu,pikachu,pikachu,pikachu,pikachu,pikachu)
+console.log(pokemons)
