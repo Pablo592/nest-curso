@@ -1,16 +1,14 @@
 import './style.css'
-import { pikachu } from './bases/03.classes.ts'
+import { charmander } from './bases/05-decorators.ts'
 import typescriptLogo from './typescript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.ts'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
-    <p>Hello, ${pikachu.name}!</p>
-    <img src="${pikachu.imageUrl}" alt="Pikachu" />
-    <p>${pikachu.name} says:</p>
-    <p>${pikachu.speak()}Speak</button>
-    <p>${pikachu.scream()}Scream</button>
+    <p>${charmander.name} says:</p>
+    <p>${charmander.speak()}Speak</button>
+    <p>${charmander.scream()}Scream</button>
     <a href="https://vitejs.dev" target="_blank">
       <img src="${viteLogo}" class="logo" alt="Vite logo" />
     </a>
