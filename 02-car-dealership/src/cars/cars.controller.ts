@@ -1,4 +1,4 @@
-import { Controller, Get, NotFoundException, Param, ParseIntPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, NotFoundException, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { CarsService } from './cars.service';
 
 @Controller('cars')
@@ -22,5 +22,20 @@ export class CarsController {
             throw new NotFoundException(`Car with id ${id} not found`);
         
         return car
+    }
+
+    @Post()
+    createCar( @Body() body){
+        return this.carsService.createCar(body);
+    }
+
+    @Put(':id')
+    updateCar( @Param('id', ParseIntPipe) id, @Body() body){
+        return this.carsService.updateCar(parseInt(id), body);
+    }
+
+    @Delete(':id')
+    deleteCar( @Param('id', ParseIntPipe) id){
+        return this.carsService.deleteCar(parseInt(id));
     }
 }

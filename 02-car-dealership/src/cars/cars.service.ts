@@ -48,4 +48,21 @@ export class CarsService {
     findOneById(id: number) {
         return this.cars.find(car => car.id === id);
     }
+
+    createCar(car) {
+        this.cars.push(car);
+        return car;
+    }
+
+    updateCar(id: number, car) {
+        const index = this.cars.findIndex(car => car.id === id);
+        this.cars[index] = car;
+        return car;
+    }
+
+    deleteCar(id: number) {
+        const index = this.cars.findIndex(car => car.id === id);
+        this.cars.splice(index, 1);
+        return this.cars;
+    }
 }
