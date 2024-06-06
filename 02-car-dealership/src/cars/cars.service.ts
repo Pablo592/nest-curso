@@ -40,4 +40,12 @@ export class CarsService {
             price: 35000
         }
     ];
+
+    findAll() {
+        return this.cars;
+    }
+
+    findOneById(id: number) {
+        return this.cars.find(car => car.id === id);
+    }
 }
