@@ -1,9 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { v4 as uuid } from 'uuid';
 
-import { Car } from './interfaces/car.interface';
-import { CreateCarDto } from './dto/create-car.dto';
-import { UpdateCarDto } from './dto/update-car.dto';
+import { CreateCarDto,UpdateCarDto } from './dto/index.dto';
 
 @Injectable()
 export class CarsService {
@@ -66,9 +64,19 @@ export class CarsService {
     }
 
     updateCar(id: string, updateCar:UpdateCarDto) {
-        const index = this.cars.findIndex(car => car.id === id);
-        this.cars[index] = updateCar;
-        return updateCar;
+        
+        let carDB = this.findOneById(id);
+
+        this.cars = this.cars.map(car => {
+            if(car.id === id) {
+                return {
+                    ...carDB,
+                    ...updateCar,
+                    id
+                }
+            }
+            return car;
+        });
     }
 
     deleteCar(id: string) {
