@@ -19,10 +19,6 @@ export class CarsController {
     getCarById( @Param('id', ParseUUIDPipe) id: string) {
 
         const car = this.carsService.findOneById(id);
-
-        if( !car) 
-            throw new NotFoundException(`Car with id ${id} not found`);
-        
         return car
     }
 
