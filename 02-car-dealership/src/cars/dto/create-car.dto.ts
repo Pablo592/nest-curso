@@ -2,6 +2,7 @@ import { IsDate, IsNumber, IsString } from "class-validator";
 
 export class CreateCarDto {
 
+  id: string;  
   @IsString()
   @IsDate()
   make: string;
@@ -9,8 +10,6 @@ export class CreateCarDto {
   model: string;
   @IsString()
   year: number;
-  @IsString()
-  vin: string;
   @IsNumber()
   price: number;
 }

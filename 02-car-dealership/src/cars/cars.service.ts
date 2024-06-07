@@ -2,11 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { v4 as uuid } from 'uuid';
 
 import { Car } from './interfaces/car.interface';
+import { CreateCarDto } from './dto/create-car.dto';
 
 @Injectable()
 export class CarsService {
 
-    private cars : Car[] = [
+    private cars : CreateCarDto[] = [
         {
             id: uuid(),
             make: 'Toyota',
@@ -52,15 +53,21 @@ export class CarsService {
         return this.cars.find(car => car.id === id);
     }
 
-    createCar(car) {
+    createCar( createCarDto:CreateCarDto) {
+
+        const car:CreateCarDto = {
+            id: uuid(),
+            ...createCarDto
+        };
+
         this.cars.push(car);
-        return car;
+        return createCarDto;
     }
 
-    updateCar(id: string, car) {
+    updateCar(id: string, createCarDto:CreateCarDto) {
         const index = this.cars.findIndex(car => car.id === id);
-        this.cars[index] = car;
-        return car;
+        this.cars[index] = createCarDto;
+        return createCarDto;
     }
 
     deleteCar(id: string) {
