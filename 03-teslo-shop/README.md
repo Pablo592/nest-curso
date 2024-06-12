@@ -3,8 +3,12 @@
 </p>
 
 
-
+# Instalando dependencias
 yarn add @nestjs/config
 yarn add @nestjs/typeorm
 yarn add typeorm --save
 yarn add pg
+
+# Comandos utiles
+
+nest g res < nombre de la entidad > --no-spec
