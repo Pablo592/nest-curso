@@ -8,6 +8,7 @@ yarn add @nestjs/config
 yarn add @nestjs/typeorm
 yarn add typeorm --save
 yarn add pg
+yarn add class-validator class-transformer
 
 # Comandos utiles
 
