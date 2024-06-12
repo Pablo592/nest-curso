@@ -11,12 +11,17 @@ export class CreateProductDto {
     @IsOptional()
     price?: number
     
+    @IsOptional()
     description?:string
     
+    @IsOptional()
     slug?:string
-    
+
+    @IsOptional()
+    @IsNumber()
     stock?:number
     
+    @IsOptional()
     sizes: string[]
 
     @IsIn(['men','women','kid','unisex'])
