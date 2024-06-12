@@ -1,6 +1,6 @@
 import { type } from "os";
 import { text } from "stream/consumers";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, BeforeUpdate, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Product {
@@ -26,7 +26,8 @@ export class Product {
 
     @Column({
         type: 'text',
-        unique: true
+        unique: true,
+        nullable: true
     })
     slug: string
 
@@ -48,4 +49,12 @@ export class Product {
         type: 'text'
     })
     gender: string
+
+
+    @BeforeInsert()
+    antesDeGuardar(){}
+
+
+    @BeforeUpdate()
+    antesDeActualizar(){}
 }
