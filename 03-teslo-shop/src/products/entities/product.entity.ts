@@ -1,19 +1,17 @@
-import { type } from "os";
-import { text } from "stream/consumers";
-import { BeforeInsert, BeforeUpdate, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, BeforeUpdate, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Product {
 
-    @PrimaryGeneratedColumn('increment')
-    id:number
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
 
     @Column('text', {
         unique: true,
     })
-    title: string
+    title: string;
 
-    @Column('numeric', {
+    @Column('float',{
         default: 0
     })
     price: number;
@@ -22,39 +20,56 @@ export class Product {
         type: 'text',
         nullable: true
     })
-    description: string
+    description: string;
 
-    @Column({
-        type: 'text',
-        unique: true,
-        nullable: true
+    @Column('text', {
+        unique: true
     })
-    slug: string
+    slug: string;
 
-
-    @Column({
-        type: 'int',
+    @Column('int', {
         default: 0
     })
-    stock: number
+    stock: number;
 
-
-    @Column({
-        type: 'text',
+    @Column('text',{
         array: true
     })
-    sizes: string[]
+    sizes: string[];
 
-    @Column({
-        type: 'text'
+    @Column('text')
+    gender: string;
+
+
+    @Column('text', {
+        array: true,
+        default: []
     })
-    gender: string
+    tags: string[];
 
+    // images
 
     @BeforeInsert()
-    antesDeGuardar(){}
+    checkSlugInsert() {
 
+        if ( !this.slug ) {
+            this.slug = this.title;
+        }
+
+        this.slug = this.slug
+            .toLowerCase()
+            .replaceAll(' ','_')
+            .replaceAll("'",'')
+
+    }
 
     @BeforeUpdate()
-    antesDeActualizar(){}
+    checkSlugUpdate() {
+        this.slug = this.slug
+            .toLowerCase()
+            .replaceAll(' ','_')
+            .replaceAll("'",'')
+    }
+
+
 }
